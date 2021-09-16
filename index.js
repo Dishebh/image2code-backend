@@ -6,6 +6,8 @@ const keys = require('./config/keys');
 const User = require('./models/User');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const cookieSession = require('cookie-session');
+const connectDB = require('./config/db');
 
 const app = express();
 
@@ -18,6 +20,21 @@ connectDB();
 
 // passport
 passportServices(keys, User, GoogleStrategy, passport);
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey],
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// routes
+app.use('/auth', require('./routes/auth'));
+
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
