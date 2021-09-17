@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-connectDB();
+connectDB().then(console.log('Database connected!'));
 
 // passport
 passportServices(keys, User, GoogleStrategy, passport);
@@ -34,7 +34,7 @@ app.use(passport.session());
 // routes
 app.use('/auth', require('./routes/auth'));
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
