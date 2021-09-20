@@ -33,6 +33,7 @@ app.use(passport.session());
 
 // routes
 app.use('/auth', require('./routes/auth'));
+app.use('/api', require('./routes/images'));
 
 const port = process.env.PORT || 5000;
 
