@@ -27,23 +27,6 @@ router.post('/get_text', (req, res) => {
       console.log(text);
     }
   );
-  // console.log('img', img);
-
-  // fetch(img)
-  //   .then((res) => res.blob())
-  //   .then(blobToBase64)
-  //   .then((res) => (imgData = res));
-
-  // tesseract
-  //   .recognize(img, config)
-  //   .then((text) => {
-  //     console.log('Result:', text);
-  //     res.status(200).send(text);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //     res.status(500).send(error);
-  //   });
 });
 
 module.exports = router;
