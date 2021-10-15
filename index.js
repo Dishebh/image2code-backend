@@ -9,6 +9,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const cookieSession = require('cookie-session');
 const connectDB = require('./config/db');
 
+// Init express
 const app = express();
 
 app.use(cors());
